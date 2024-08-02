@@ -249,6 +249,8 @@ class Transformer(nn.Module):
   @nn.compact
   def __call__(self,
                input_ids: jnp.ndarray,
+               # Add time-conditioning
+               t: float,
                deterministic: bool = True) -> Dict[Text, jnp.ndarray]:
     input_ids = input_ids.astype('int32')
     input_embeddings = Embed(
