@@ -218,7 +218,7 @@ class Trainer:
 
         checkpoint_freq = self.config.get("checkpoint_frequency") or 1000000
             
-        for epoch in range(start_epoch+1, max_epochs):
+        for epoch in range(start_epoch, max_epochs):
             train_key, val_key, key = jr.split(key, 3)
 
             epoch_summary = []
@@ -242,7 +242,7 @@ class Trainer:
                 # Update the progressbar every iteration
                 itr += 1
                 if (show_progress):
-                    pbar.set_description(f"Iteration {itr + 1}, epoch {epoch + 1}/{max_epochs}, prev epoch loss: {curr_loss:.3f}")
+                    pbar.set_description(f"Iteration {itr + 1}, epoch {epoch + 1}/{max_epochs}, prev epoch loss: {curr_loss:.3f}, batch loss: {loss:.3f}")
                     pbar.update(1)
 
             # Train epoch callback
