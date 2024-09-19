@@ -73,7 +73,7 @@ class ImageNet_class_conditional_generator():
 
     def generate_samples(self, input_tokens, rng, start_iter=0, num_iterations=16):
       def tokens_to_logits(seq):
-        logits = self.transformer_model.apply(self.transformer_variables, seq, deterministic=True)
+        logits = self.transformer_model.apply(self.transformer_variables, seq, 0, deterministic=True)
         logits = logits[..., :self.maskgit_cf.vqvae.codebook_size]
         return logits
 
